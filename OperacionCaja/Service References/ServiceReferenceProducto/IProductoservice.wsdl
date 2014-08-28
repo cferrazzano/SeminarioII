@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="urn:uProductoIntf" name="IProductoservice" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema xmlns="urn:uProductoIntf" targetNamespace="urn:uProductoIntf">
+      <xs:complexType name="TWSProducto">
+        <xs:sequence>
+          <xs:element name="Codigo" type="xs:int" />
+          <xs:element name="Nombre" type="xs:string" />
+          <xs:element name="Precio" type="xs:double" />
+          <xs:element name="Stock" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="obtenerProducto0Request">
+    <part name="idSesion" type="xs:string" />
+    <part name="codigo" type="xs:int" />
+  </message>
+  <message name="obtenerProducto0Response">
+    <part name="return" type="ns1:TWSProducto" />
+  </message>
+  <message name="modificarStock1Request">
+    <part name="idSesion" type="xs:string" />
+    <part name="codigo" type="xs:int" />
+    <part name="incremento" type="xs:int" />
+  </message>
+  <message name="modificarStock1Response">
+    <part name="return" type="xs:int" />
+  </message>
+  <portType name="IProducto">
+    <operation name="obtenerProducto">
+      <input message="tns:obtenerProducto0Request" />
+      <output message="tns:obtenerProducto0Response" />
+    </operation>
+    <operation name="modificarStock">
+      <input message="tns:modificarStock1Request" />
+      <output message="tns:modificarStock1Response" />
+    </operation>
+  </portType>
+  <binding name="IProductobinding" type="tns:IProducto">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="obtenerProducto">
+      <soap:operation soapAction="urn:uProductoIntf-IProducto#obtenerProducto" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:uProductoIntf-IProducto" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:uProductoIntf-IProducto" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="modificarStock">
+      <soap:operation soapAction="urn:uProductoIntf-IProducto#modificarStock" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:uProductoIntf-IProducto" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:uProductoIntf-IProducto" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="IProductoservice">
+    <port name="IProductoPort" binding="tns:IProductobinding">
+      <soap:address location="http://127.0.0.1:1008/soap/IProducto" />
+    </port>
+  </service>
+</definitions>

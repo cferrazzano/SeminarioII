@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="urn:uCotizacionIntf" name="ICotizacionservice" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema xmlns="urn:uCotizacionIntf" targetNamespace="urn:uCotizacionIntf">
+      <xs:complexType name="TWSCotizacion">
+        <xs:sequence>
+          <xs:element name="Codigo" type="xs:int" />
+          <xs:element name="Descripcion" type="xs:string" />
+          <xs:element name="Compra" type="xs:double" />
+          <xs:element name="Venta" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TWSListaCotizacion">
+        <xs:complexContent mixed="false">
+          <xs:restriction base="soapenc:Array">
+            <xs:sequence />
+            <xs:attribute xmlns:n1="http://schemas.xmlsoap.org/wsdl/" n1:arrayType="ns1:TWSCotizacion[]" ref="soapenc:arrayType" />
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="obtenerCotizacion0Request">
+    <part name="idSesion" type="xs:string" />
+    <part name="codigo" type="xs:int" />
+  </message>
+  <message name="obtenerCotizacion0Response">
+    <part name="return" type="ns1:TWSCotizacion" />
+  </message>
+  <message name="obtenerCotizaciones1Request">
+    <part name="idSesion" type="xs:string" />
+  </message>
+  <message name="obtenerCotizaciones1Response">
+    <part name="return" type="ns1:TWSListaCotizacion" />
+  </message>
+  <portType name="ICotizacion">
+    <operation name="obtenerCotizacion">
+      <input message="tns:obtenerCotizacion0Request" />
+      <output message="tns:obtenerCotizacion0Response" />
+    </operation>
+    <operation name="obtenerCotizaciones">
+      <input message="tns:obtenerCotizaciones1Request" />
+      <output message="tns:obtenerCotizaciones1Response" />
+    </operation>
+  </portType>
+  <binding name="ICotizacionbinding" type="tns:ICotizacion">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="obtenerCotizacion">
+      <soap:operation soapAction="urn:uCotizacionIntf-ICotizacion#obtenerCotizacion" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:uCotizacionIntf-ICotizacion" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:uCotizacionIntf-ICotizacion" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="obtenerCotizaciones">
+      <soap:operation soapAction="urn:uCotizacionIntf-ICotizacion#obtenerCotizaciones" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:uCotizacionIntf-ICotizacion" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:uCotizacionIntf-ICotizacion" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ICotizacionservice">
+    <port name="ICotizacionPort" binding="tns:ICotizacionbinding">
+      <soap:address location="http://127.0.0.1:1008/soap/ICotizacion" />
+    </port>
+  </service>
+</definitions>

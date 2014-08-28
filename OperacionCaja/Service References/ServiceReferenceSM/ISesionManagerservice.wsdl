@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="ISesionManagerservice" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types />
+  <message name="obtenerIDSesionProducto0Request">
+    <part name="idEquipo" type="xs:string" />
+  </message>
+  <message name="obtenerIDSesionProducto0Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="obtenerIDSesionCotizacion1Request">
+    <part name="idEquipo" type="xs:string" />
+  </message>
+  <message name="obtenerIDSesionCotizacion1Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="cerrarSesionProducto2Request">
+    <part name="idSesion" type="xs:string" />
+  </message>
+  <message name="cerrarSesionProducto2Response">
+    <part name="return" type="xs:boolean" />
+  </message>
+  <message name="cerrarSesionCotizacion3Request">
+    <part name="idSesion" type="xs:string" />
+  </message>
+  <message name="cerrarSesionCotizacion3Response">
+    <part name="return" type="xs:boolean" />
+  </message>
+  <portType name="ISesionManager">
+    <operation name="obtenerIDSesionProducto">
+      <input message="tns:obtenerIDSesionProducto0Request" />
+      <output message="tns:obtenerIDSesionProducto0Response" />
+    </operation>
+    <operation name="obtenerIDSesionCotizacion">
+      <input message="tns:obtenerIDSesionCotizacion1Request" />
+      <output message="tns:obtenerIDSesionCotizacion1Response" />
+    </operation>
+    <operation name="cerrarSesionProducto">
+      <input message="tns:cerrarSesionProducto2Request" />
+      <output message="tns:cerrarSesionProducto2Response" />
+    </operation>
+    <operation name="cerrarSesionCotizacion">
+      <input message="tns:cerrarSesionCotizacion3Request" />
+      <output message="tns:cerrarSesionCotizacion3Response" />
+    </operation>
+  </portType>
+  <binding name="ISesionManagerbinding" type="tns:ISesionManager">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="obtenerIDSesionProducto">
+      <soap:operation soapAction="urn:uSesionManagerIntf-ISesionManager#obtenerIDSesionProducto" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:uSesionManagerIntf-ISesionManager" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:uSesionManagerIntf-ISesionManager" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="obtenerIDSesionCotizacion">
+      <soap:operation soapAction="urn:uSesionManagerIntf-ISesionManager#obtenerIDSesionCotizacion" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:uSesionManagerIntf-ISesionManager" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:uSesionManagerIntf-ISesionManager" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="cerrarSesionProducto">
+      <soap:operation soapAction="urn:uSesionManagerIntf-ISesionManager#cerrarSesionProducto" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:uSesionManagerIntf-ISesionManager" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:uSesionManagerIntf-ISesionManager" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="cerrarSesionCotizacion">
+      <soap:operation soapAction="urn:uSesionManagerIntf-ISesionManager#cerrarSesionCotizacion" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:uSesionManagerIntf-ISesionManager" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:uSesionManagerIntf-ISesionManager" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ISesionManagerservice">
+    <port name="ISesionManagerPort" binding="tns:ISesionManagerbinding">
+      <soap:address location="http://127.0.0.1:1008/soap/ISesionManager" />
+    </port>
+  </service>
+</definitions>
