@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace OperacionCaja
 {
-
+    //Clase
     /// <summary>
     /// Clase ColeccionMovimiento. Contenedora de movimientos
     /// <remarks>
